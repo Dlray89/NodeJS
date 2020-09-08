@@ -14,9 +14,9 @@ const removeNote = (title) => {
 
 
     if (notes.length > match.length) {
-        console.log(chalk.red.inverse('note removed'))
+        console.log(chalk.magenta('Your note has been removed'))
     } else {
-        console.log(chalk.red.inverse('NO note found'))
+        console.log(chalk.red.underline("The note your looking for doesn't exist"))
     }
     saveNotes(match)
 }
@@ -34,10 +34,12 @@ const addNote = (title, body) => {
             body: body
         })
         saveNotes(notes)
-        console.log(chalk.green('new note added!'))
+        console.log(chalk.greenBright.inverse('New Note added!'))
+        console.log(chalk.greenBright('To view notes type command *node app.js list'))
 
     } else {
-        console.log(chalk.red.bold.inverse('NOte title taken'))
+        console.log(chalk.bold.red.inverse('Note title is taken. \n'))
+        console.log(chalk.bold.yellow('Try Again!!'))
     }
 
 
@@ -63,9 +65,11 @@ const loadNOtes = () => {
 
 const listNodes = () => {
     const notes = loadNOtes()
-
+    console.log(chalk.cyan('       | Your Note List |'))
+    console.log(chalk.cyan('-----------------------------------'))
     for (let i = 0; i < notes.length; i++) {
-        console.log(notes[i])
+        
+        console.log(chalk.magenta(notes[i].title, notes[i].body))
     }
 }
 

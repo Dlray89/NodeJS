@@ -68,5 +68,4 @@ yargs.command({
     }
 })
 // add , remove, read, list notes
-console.log(yargs.argv)
-// console.log(process.argv)
+console.log(yargs.argv._)
